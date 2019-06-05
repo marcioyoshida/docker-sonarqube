@@ -6,9 +6,17 @@ ENV SONAR_VERSION=7.7 \
     # Defaults to using H2
     # DEPRECATED. Use -v sonar.jdbc.username=... instead
     # Drop these in the next release, also in the run script
-    SONARQUBE_JDBC_USERNAME=sonar \
-    SONARQUBE_JDBC_PASSWORD=sonar \
-    SONARQUBE_JDBC_URL=
+    #SONARQUBE_JDBC_USERNAME=sonar \
+    #SONARQUBE_JDBC_PASSWORD=sonar \
+    #SONARQUBE_JDBC_URL=
+    sonar.jdbc.username=sonarqube \
+    sonar.jdbc.password=sOn4rQB#u2eR \
+    TZ=UTC \
+    sonar.jdbc.url=jdbc:oracle:thin:@hbutanclan01.qa.stelo.intranet:1521:HMLPOSTR \
+    HTTP_PROXY=http://proxy.qa.stelo.intranet:3130 \
+    HTTPS_PROXY=http://proxy.qa.stelo.intranet:3130 \
+
+
 
 # Http port
 EXPOSE 9000
@@ -44,7 +52,10 @@ RUN set -x \
     && rm sonarqube.zip* \
     && rm -rf $SONARQUBE_HOME/bin/*
 
-VOLUME "$SONARQUBE_HOME/data"
+#VOLUME "$SONARQUBE_HOME/data"
+VOLUME /var/opt/sonarqube/data:/opt/sonarqube/data \
+       /var/opt/sonarqube/extensions:/opt/sonarqube/extensions
+
 
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
