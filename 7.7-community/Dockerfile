@@ -14,7 +14,7 @@ ENV SONAR_VERSION=7.7 \
     TZ=UTC \
     sonar.jdbc.url=jdbc:oracle:thin:@hbutanclan01.qa.stelo.intranet:1521:HMLPOSTR \
     HTTP_PROXY=http://proxy.qa.stelo.intranet:3130 \
-    HTTPS_PROXY=http://proxy.qa.stelo.intranet:3130 \
+    HTTPS_PROXY=http://proxy.qa.stelo.intranet:3130
 
 
 
